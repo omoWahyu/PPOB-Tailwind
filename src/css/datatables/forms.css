@@ -1,0 +1,199 @@
+/* Search Form */
+.dtsb-greyscale {
+  @apply border border-gray-400;
+}
+
+div.dtsb-logicContainer .dtsb-greyscale {
+  border: none !important;
+}
+
+div.dtsb-searchBuilder {
+  justify-content: space-evenly;
+  cursor: default;
+  margin-bottom: 1em;
+  text-align: left;
+}
+div.dtsb-searchBuilder button.dtsb-button,
+div.dtsb-searchBuilder select {
+  font-size: 1em;
+}
+div.dtsb-searchBuilder div.dtsb-titleRow {
+  justify-content: space-evenly;
+  margin-bottom: 0.5em;
+}
+div.dtsb-searchBuilder div.dtsb-titleRow div.dtsb-title {
+  display: inline-block;
+  padding-top: 6px;
+}
+div.dtsb-searchBuilder div.dtsb-titleRow button.dtsb-clearAll {
+  @apply float-right mb-2 bg-pj-300 hover:bg-red-500 hover:text-white hover:shadow-md hover:font-medium shrink-down-sm duration-300;
+}
+div.dtsb-searchBuilder div.dtsb-vertical .dtsb-value,
+div.dtsb-searchBuilder div.dtsb-vertical .dtsb-data,
+div.dtsb-searchBuilder div.dtsb-vertical .dtsb-condition {
+  display: block;
+}
+div.dtsb-searchBuilder div.dtsb-group {
+  @apply relative clear-both;
+}
+div.dtsb-searchBuilder div.dtsb-group button.dtsb-clearGroup {
+  @apply hover:bg-red-400 text-center duration-300 ease-in-out;
+}
+div.dtsb-searchBuilder div.dtsb-group div.dtsb-logicContainer {
+  @apply rotate-90 absolute mt-4 mr-1;
+}
+div.dtsb-searchBuilder div.dtsb-group div.dtsb-criteria {
+  @apply mb-3;
+}
+button.dtsb-delete {
+  @apply min-w-10 w-full lg:w-auto duration-300 ease-in-out text-white click-up-sm;
+}
+button.dtsb-delete:hover {
+  --tw-bg-opacity: 1;
+  --tw-text-opacity: 1;
+  background-color: rgb(248 113 113 / var(--tw-bg-opacity)) !important;
+  color: rgb(255 255 255 / var(--tw-text-opacity)) !important;
+}
+button.dtsb-add {
+  @apply shrink-down-sm w-full lg:w-auto;
+}
+div.dtsb-criteria {
+  @apply md:space-x-3 flex flex-row;
+}
+@media screen and (max-width: 640px) {
+  div.dtsb-criteria {
+    @apply gap-2 grid;
+  }
+}
+
+div.dtsb-searchBuilder div.dtsb-group div.dtsb-criteria select.dtsb-dropDown,
+div.dtsb-searchBuilder div.dtsb-group div.dtsb-criteria input.dtsb-input {
+  @apply form-multiselect outline-none focus:ring-pj-550 focus:ring-2 focus:border-pj-550 px-3 py-2 bg-gray-200 grow duration-300 ease-in-out;
+}
+div.dtsb-searchBuilder
+  div.dtsb-group
+  div.dtsb-criteria
+  select.dtsb-dropDown
+  option.dtsb-notItalic,
+div.dtsb-searchBuilder
+  div.dtsb-group
+  div.dtsb-criteria
+  input.dtsb-input
+  option.dtsb-notItalic {
+  font-style: normal;
+}
+div.dtsb-searchBuilder div.dtsb-group div.dtsb-criteria select.dtsb-italic {
+  font-style: italic;
+}
+div.dtsb-searchBuilder
+  div.dtsb-group
+  div.dtsb-criteria
+  div.dtsb-buttonContainer {
+  @apply float-right inline-block;
+}
+div.dtsb-searchBuilder
+  div.dtsb-group
+  div.dtsb-criteria
+  div.dtsb-buttonContainer
+  button.dtsb-delete,
+div.dtsb-searchBuilder
+  div.dtsb-group
+  div.dtsb-criteria
+  div.dtsb-buttonContainer
+  button.dtsb-right,
+div.dtsb-searchBuilder
+  div.dtsb-group
+  div.dtsb-criteria
+  div.dtsb-buttonContainer
+  button.dtsb-left {
+  margin-right: 0.8em;
+}
+div.dtsb-searchBuilder
+  div.dtsb-group
+  div.dtsb-criteria
+  div.dtsb-buttonContainer
+  button.dtsb-delete:last-child,
+div.dtsb-searchBuilder
+  div.dtsb-group
+  div.dtsb-criteria
+  div.dtsb-buttonContainer
+  button.dtsb-right:last-child,
+div.dtsb-searchBuilder
+  div.dtsb-group
+  div.dtsb-criteria
+  div.dtsb-buttonContainer
+  button.dtsb-left:last-child {
+  margin-right: 0;
+}
+div.dtsb-searchBuilder div.dtsb-group div.dtsb-criteria span.dtsp-joiner {
+  margin-right: 0.8em;
+}
+
+div.dtsb-searchBuilder button,
+div.dtsb-searchBuilder select,
+div.dtsb-searchBuilder input {
+  background-color: #f9f9f9;
+}
+div.dtsb-searchBuilder button.dtsb-button {
+  @apply rounded-lg py-2 px-3 text-center text-sm font-medium leading-6 cursor-pointer text-gray-800 bg-gray-200 hover:bg-gray-400 border relative inline-block box-border text-ellipsis outline-none select-none;
+}
+div.dtsb-searchBuilder div.dtsb-logicContainer {
+  @apply rounded-lg bg-gray-200 border overflow-hidden;
+}
+div.dtsb-searchBuilder div.dtsb-logicContainer button {
+  @apply bg-transparent border;
+}
+div.dtsb-searchBuilder button.dtsb-clearGroup {
+  @apply m-5 p-2;
+}
+div.dtsb-searchBuilder button.dtsb-iptbtn {
+  min-width: 100px;
+  text-align: left;
+}
+div.dtsb-searchBuilder div.dtsb-group div.dtsb-logicContainer {
+  @apply border rounded-lg flex flex-row flex-wrap justify-start content-start items-start;
+}
+div.dtsb-searchBuilder
+  div.dtsb-group
+  div.dtsb-logicContainer
+  button.dtsb-logic {
+  @apply border-none rounded-none flex-grow flex-shrink-0 basis-12 m-0;
+}
+div.dtsb-searchBuilder
+  div.dtsb-group
+  div.dtsb-logicContainer
+  button.dtsb-clearGroup {
+  @apply border-none rounded-none w-8 m-0;
+}
+div.dtsb-searchBuilder div.dtsb-group div.dtsb-criteria select.dtsb-dropDown,
+div.dtsb-searchBuilder div.dtsb-group div.dtsb-criteria input.dtsb-input {
+  @apply flex-wrap rounded-lg text-sm md:text-base font-medium outline-none hover:bg-gray-400 duration-300 click-up-sm;
+}
+/* Filtering */
+div.dtsb-searchBuilder div.dtsb-group div.dtsb-criteria select.dtsb-data {
+  /* @apply bg-pj-200 border-pj-550; */
+}
+div.dtsb-searchBuilder div.dtsb-group div.dtsb-criteria select.dtsb-condition {
+  /* @apply bg-rose-200 border-rose-500; */
+}
+div.dtsb-searchBuilder div.dtsb-group div.dtsb-criteria select.dtsb-value,
+div.dtsb-searchBuilder div.dtsb-group div.dtsb-criteria input.dtsb-value {
+  /* @apply bg-sky-200 border-sky-500; */
+}
+div.dtsb-searchBuilder
+  div.dtsb-group
+  div.dtsb-criteria
+  select.dtsb-condition
+  option.dtsb-option,
+div.dtsb-searchBuilder
+  div.dtsb-group
+  div.dtsb-criteria
+  select.dtsb-data
+  option.dtsb-option,
+div.dtsb-searchBuilder
+  div.dtsb-group
+  div.dtsb-criteria
+  select.dtsb-value
+  option.dtsb-option {
+  background-color: white;
+}

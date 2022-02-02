@@ -1,0 +1,13 @@
+# Rename this file to .env
+
+# DB Configuration
+DB_HOSTNAME="localhost"
+DB_USERNAME=""
+DB_PASSWORD=""
+DB_DATABASE=""
+DB_DRIVER="mysqli"
+
+# Server Configruation
+# change to production if wanna to publish
+# change to development if on dev stage
+CI_ENV='development'
