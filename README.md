@@ -18,3 +18,18 @@ Used Resource :
 - Bootstrap : https://getbootstrap.com/docs/4.0/getting-started/introduction/
 - Jquery : https://jquery.com/
 - DataTables : https://datatables.net/
+
+<h3> <b> Application Highlight :</b> </h3>
+
+<img src="https://github.com/yuu27q/PPOB-Tailwind/blob/main/screenshot/Login%20User.jpg"
+height="450px" width="1000px">
+<img src="https://github.com/yuu27q/PPOB-Tailwind/blob/main/screenshot/Login%20Admin.jpg"
+height="450px" width="1000px">
+<img src="https://github.com/yuu27q/PPOB-Tailwind/blob/main/screenshot/Login%20Admin%20(Dark%20Mode).jpg"
+height="450px" width="1000px">
+<img src="https://github.com/yuu27q/PPOB-Tailwind/blob/main/screenshot/Registration%20User.jpg"
+height="450px" width="1000px">
+<img src="https://github.com/yuu27q/PPOB-Tailwind/blob/main/screenshot/Dashboard%20User.jpg"
+height="450px" width="1000px">
+<img src="https://github.com/yuu27q/PPOB-Tailwind/blob/main/screenshot/Dashboard%20Admin.jpg"
+height="450px" width="1000px">
