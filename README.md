@@ -18,5 +18,3 @@ Used Resource :
 - Bootstrap : https://getbootstrap.com/docs/4.0/getting-started/introduction/
 - Jquery : https://jquery.com/
 - DataTables : https://datatables.net/
-
-<h3> <b> Application Highlight :</b> </h3>
