@@ -11,7 +11,7 @@ Feature :
 - Register User
 - Generate Laporan Tagihan Pelanggan
 
-* Note : <b>`Internet Connection Is not Required`</b>
+* Note : <b>`Internet Connection Is Required`</b>
 
 Used Resource :
 
@@ -20,12 +20,3 @@ Used Resource :
 - DataTables : https://datatables.net/
 
 <h3> <b> Application Highlight :</b> </h3>
-
-<img src="https://gitlab.com/ShinyQ_11/ukk_ppob/raw/master/ss/login.PNG"
-height="450px" width="1000px">
-<img src="https://gitlab.com/ShinyQ_11/ukk_ppob/raw/master/ss/dash.PNG"
-height="450px" width="1000px">
-<img src="https://gitlab.com/ShinyQ_11/ukk_ppob/raw/master/ss/bayar.PNG"
-height="450px" width="1000px">
-<img src="https://gitlab.com/ShinyQ_11/ukk_ppob/raw/master/ss/generate.PNG"
-height="450px" width="1000px">

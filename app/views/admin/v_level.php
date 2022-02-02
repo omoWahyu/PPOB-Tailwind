@@ -49,16 +49,16 @@
 				data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
 			
-			<form action="<?=base_url('level/edit_level')?>" method="post" class="modal-body relative p-4">
-        <input type="hidden" id="id_level" name="id_level" required="required">
+			<form action="<?=base_url('level/edit_level')?>" method="post">
+				<input type="hidden" id="id_level" name="id_level" required="required">
 
-        <div class="modal-body relative p-4">
-          <div class="form-floating mb-3 ">
-            <input  type="text" name="nama_level" required="required" class="form-control block w-full px-3 text-base font-normal text-gray-700 bg-gray-200 bg-clip-padding border rounded-lg transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" 
-              id="nama_level" placeholder="John Doe">
-            <label for="nama_level" class="text-gray-700">Nama Level</label>
-          </div>
-        </div>
+				<div class="modal-body relative p-4">
+					<div class="form-floating mb-3 ">
+						<input  type="text" name="nama_level" required="required" class="form-control block w-full px-3 text-base font-normal text-gray-700 bg-gray-200 bg-clip-padding border rounded-lg transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" 
+						id="nama_level" placeholder="John Doe">
+						<label for="nama_level" class="text-gray-700">Nama Level</label>
+					</div>
+				</div>
 				<div
 					class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md">
 					<button type="button"
