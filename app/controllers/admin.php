@@ -21,7 +21,7 @@ class admin extends CI_Controller {
 				'regist' => false, // Boolean
 				'min_psl' => 5 // Minimal Password Length
 			);
-			 $this->load->view('components/parts/v_login',$data);
+			 $this->load->view('components/layouts/v_login',$data);
     }
   }
 

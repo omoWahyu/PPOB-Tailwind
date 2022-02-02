@@ -23,7 +23,7 @@ class user extends CI_Controller {
 			);
 			 $data['DataTarif'] = $this->user->getDataTarif();
 			//  $this->load->view('components/layouts/v_header';
-			 $this->load->view('components/parts/v_login',$data);
+			 $this->load->view('components/layouts/v_login',$data);
 			//  $this->load->view('components/layouts/v_footer');
 		}
 	}

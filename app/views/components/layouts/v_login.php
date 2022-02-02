@@ -36,9 +36,10 @@
 			</form>
 
 			<hr class="my-6 border-gray-300 w-full">
-
-			<p class="mt-8">Belum memiliki akun? <a href="" data-bs-toggle="modal" data-bs-target="#registrasi" class="text-blue-500 hover:text-blue-700 font-semibold">Daftarkan Akun</a></p>
-
+			
+			<?php if($regist) { ?>
+				<p class="mt-8">Belum memiliki akun? <a href="" data-bs-toggle="modal" data-bs-target="#registrasi" class="text-blue-500 hover:text-blue-700 font-semibold">Daftarkan Akun</a></p>
+			<?php }; ?>
 		</div>
 	</div>
 
