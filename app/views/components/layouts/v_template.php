@@ -6,17 +6,18 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-	<!-- VENDOR CSS -->
-	
+
+	<!-- CSS -->	
 	<link rel="stylesheet" href="<?=base_url('assets/')?>css/tailwind.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 
-	<!-- ICONS -->
+	<!-- Favicon -->
 	<link rel="icon" type="image/png" sizes="96x96" href="<?=base_url()?>assets/img/pln1.png">
 
-	<script src="<?=base_url()?>assets/vendor/jquery/jquery.min.js"></script>
+	<!-- Jquery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="<?=base_url()?>assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-
+       
 	<!-- DataTable -->
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
 	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
@@ -38,11 +39,11 @@
 					 <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
 				  </svg>
 			   </button>
-			   <a href="<?= base_url() ?>" class="text-xl font-bold flex items-center lg:ml-2.5">
-				<i class="fa-solid fa-bolt fa-fw mr-3"></i>
-			   <span class="self-center whitespace-nowrap">PPOB</span>
+			   <a href="<?= base_url() ?>" class="text-xl font-bold flex items-center lg:ml-2.5 hover:text-sky-500 dark:text-white dark:hover:text-sky-400 transition-all hover:scale-105">
+					<i class="fa-solid fa-bolt fa-fw mr-3"></i>
+					<span class="self-center whitespace-nowrap">PPOB</span>
 			   </a>
-			   <form action="#" method="GET" class="hidden lg:block lg:pl-32">
+			   <!-- <form action="#" method="GET" class="hidden lg:block lg:pl-32">
 				  <label for="topbar-search" class="sr-only">Search</label>
 				  <div class="mt-1 relative lg:w-64">
 					 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -52,7 +53,7 @@
 					 </div>
 					 <input type="text" name="email" id="topbar-search" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full pl-10 p-2.5" placeholder="Search">
 				  </div>
-			   </form>
+			   </form> -->
 			</div>
 			<div class="flex items-center space-x-2">
 				
@@ -64,11 +65,11 @@
 				<div class="flex justify-center">
 					<div>
 						<div class="dropdown relative">
-						<button class=" dropdown-toggle flex flex-row items-center w-full p-1 hover:bg-gray-300 md:mt-0 md:px-1 text-sm font-semibold text-left rounded-full md:w-auto focus:shadow-outlinehover:bg-blue-700 hover:shadow-lg focus:bg-blue-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-300 active:shadow-lg active:text-white transition-all ease-in-out"
+						<button class=" dropdown-toggle flex flex-row items-center w-full p-1 hover:bg-gray-300 dark:hover:bg-slate-500 md:mt-0 md:px-1 text-sm font-semibold text-left rounded-full md:w-auto focus:shadow-outlinehover:bg-blue-700 hover:shadow-lg focus:bg-blue-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-300 active:shadow-lg active:text-white dark:focus:bg-sky-300 dark:active:bg-sky-300 dark:active:text-yellow-300  transition-all ease-in-out"
 							type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" >
-							<img loading="lazy" src="https://avatars.dicebear.com/api/initials/<?php if($this->session->userdata('id_level')!= null): ?><?= $this->session->userdata(rawurlencode('nama_admin')) ?><?php else: ?><?= $this->session->userdata(rawurlencode('nama_pelanggan')) ?><?php endif ?>.svg?background=%234B5563&fontSize=35&bold=1"
+							<img loading="lazy" src="https://avatars.dicebear.com/api/adventurer-neutral/<?php if($this->session->userdata('id_level')!= null): ?><?= $this->session->userdata(rawurlencode('nama_admin')) ?><?php else: ?><?= $this->session->userdata(rawurlencode('nama_pelanggan')) ?><?php endif ?>.svg"
 								class="object-cover w-8 h-8 rounded-full" alt="Profile Picture"/>
-								<span class="mx-2">
+								<span class="mx-2 dark:text-gray-100">
 								<?php if($this->session->userdata('id_level')!= null): ?>
 									<?= $this->session->userdata(rawurlencode('nama_admin')) ?>
 									<?php else: ?>
@@ -81,11 +82,11 @@
 							<li>
 							<a class=" dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 "
 								href="<?php if($this->session->userdata('id_level')!=NULL): 
-											echo base_url('admin/logout');
-											else:
-											echo base_url('user/logout');
-											endif;
-										?>" >Logout</a>
+									echo base_url('admin/logout');
+									else:
+									echo base_url('user/logout');
+									endif;
+								?>" >Logout</a>
 							</li>
 						</ul>
 						</div>

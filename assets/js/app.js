@@ -17,17 +17,17 @@ if (
 	(!('color-theme' in localStorage) &&
 		window.matchMedia('(prefers-color-scheme: dark)').matches)
 ) {
-	themeToggleLightIcon.classList.remove('hidden');
+	themeToggleLightIcon?.classList.remove('hidden');
 } else {
-	themeToggleDarkIcon.classList.remove('hidden');
+	themeToggleDarkIcon?.classList.remove('hidden');
 }
 
 var themeToggleBtn = document.getElementById('theme-toggle');
 
-themeToggleBtn.addEventListener('click', function () {
+themeToggleBtn?.addEventListener('click', function () {
 	// toggle icons inside button
-	themeToggleDarkIcon.classList.toggle('hidden');
-	themeToggleLightIcon.classList.toggle('hidden');
+	themeToggleDarkIcon?.classList.toggle('hidden');
+	themeToggleLightIcon?.classList.toggle('hidden');
 
 	// if set via local storage previously
 	if (localStorage.getItem('color-theme')) {
@@ -50,23 +50,3 @@ themeToggleBtn.addEventListener('click', function () {
 		}
 	}
 });
-
-// Password Peeker
-
-function FPassword() {
-	var x = document.getElementById('sp');
-	if (x.type === 'password') {
-		x.type = 'text';
-	} else {
-		x.type = 'password';
-	}
-}
-
-function FPassword1() {
-	var x = document.getElementById('sp1');
-	if (x.type === 'password') {
-		x.type = 'text';
-	} else {
-		x.type = 'password';
-	}
-}
