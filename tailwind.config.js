@@ -8,7 +8,15 @@ module.exports = {
 	],
 	darkMode: 'class',
 	theme: {
-		extend: {},
+		extend: {
+			scale: {
+				200: '2',
+				300: '3',
+				400: '4',
+				500: '5',
+				600: '6',
+			},
+		},
 	},
 	plugins: [require('tw-elements/dist/plugin')],
 };

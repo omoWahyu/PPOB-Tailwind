@@ -126,7 +126,6 @@
 						<label for="terperkwh" class="text-gray-700">Tarif per KWH</label>
 					</div>
 				</div>
-				</div>
 				<div class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md">
 					<button class="inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
 					type="button" data-bs-dismiss="modal">Batal</button>
@@ -153,16 +152,15 @@
 			<div class="modal-body relative p-4">
 				<h4>Anda Yakin Ingin Menghapus Tarif ini ?</h4>
 			</div>
-      <form action="<?=base_url('tarif/hapus_tarif')?>" method="post">
-		<input type="hidden" id="id_tarif" name="id_tarif" required="required">
-        <div
-          class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md">
-          <button class="inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
-          type="button" data-bs-dismiss="modal">Batal</button>
-          <button class="inline-block px-6 py-2.5 bg-red-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-red-600 hover:shadow-lg focus:bg-red-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-700 active:shadow-lg transition duration-150 ease-in-out ml-1"
-		  type="submit">Hapus</button>
-        </div>
-      </form>
+			<form action="<?=base_url('tarif/hapus_tarif')?>" method="post">
+				<input type="hidden" id="id_tarif" name="id_tarif" required="required">
+				<div class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md">
+					<button class="inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
+					type="button" data-bs-dismiss="modal">Batal</button>
+					<button class="inline-block px-6 py-2.5 bg-red-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-red-600 hover:shadow-lg focus:bg-red-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-700 active:shadow-lg transition duration-150 ease-in-out ml-1"
+					type="submit">Hapus</button>
+				</div>
+			</form>
 		</div>
 	</div>
 </div>

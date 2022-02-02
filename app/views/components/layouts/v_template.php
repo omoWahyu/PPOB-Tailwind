@@ -192,7 +192,7 @@
 				},
 				{
 					navName: 'Konfirmasi Pembayaran',
-					iconClass: 'fa-solid fa-money',
+					iconClass: 'fa-solid fa-money-bill-simple-wave',
 					href: '<?=base_url()?>pembayaran',
 				},
 				{

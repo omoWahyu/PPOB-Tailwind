@@ -1,253 +1,148 @@
-<style>
-  .label {
-    display: inline;
-    padding: .2em .6em .3em;
-    font-size: 82%;
-    font-weight: 600;
-    line-height: 1;
-    color: #fff;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: baseline;
-    border-radius: .25em;
-  }
+<div class="pt-6 px-4">
+	<?= $this->session->flashdata('message'); ?>
 
-  input[type="text"]:disabled {
-    background: #FFFFFF;
-  }
-
-  .img-zoom {
-    /* transition: transform .2s; /* Animation */ */
-    width: 60px;
-    height: 60px;
-    z-index: 9999 !important;
-  }
-
-  .img-zoom:hover {
-    position: relative;
-    transform: scale(7); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
-    z-index: 9999 !important;
-
-}
-</style>
-<h2 class="page-title"><strong><?= $judul ?></strong></h2>
-<div class="row">
-	<div class="col-md-12">
-		<div class="panel">
-			<div class="panel-heading">
-				<h3 class="panel-title"></h3>
-			</div>
-			<div class="panel-body">
-				<table id="tabelbiasa" class="table table-bordered">
-					<thead>
-						<tr>
-              <th>No</th>
-              <th>Tanggal</th>
-              <th>Nama</th>
-              <th>No. kWh</th>
-              <th>Bulan Bayar</th>
-              <th>Grand Total</th>
-              <th>Status</th>
-              <th>Pemverifikasi</th>
-              <th>Aksi</th>
+	<div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
+		<h3 class="text-xl leading-none font-bold text-gray-900 mb-10"><?= $judul ?></h3>
+		<div class="block w-full overflow-x-auto">
+			<table id="tabelbiasa" class="items-center w-full bg-transparent border-collapse">
+				<thead>
+					<tr>
+						<th class="px-4 bg-gray-50 text-gray-700 align-middle py-3 text-xs font-semibold text-left uppercase border-l-0 border-r-0 whitespace-nowrap">No</th>
+						<th class="px-4 bg-gray-50 text-gray-700 align-middle py-3 text-xs font-semibold text-left uppercase border-l-0 border-r-0 whitespace-nowrap">Nama</th>
+						<th class="px-4 bg-gray-50 text-gray-700 align-middle py-3 text-xs font-semibold text-left uppercase border-l-0 border-r-0 whitespace-nowrap">No. KWH</th>
+						<th class="px-4 bg-gray-50 text-gray-700 align-middle py-3 text-xs font-semibold text-left uppercase border-l-0 border-r-0 whitespace-nowrap">Tanggal</th>
+						<th class="px-4 bg-gray-50 text-gray-700 align-middle py-3 text-xs font-semibold text-left uppercase border-l-0 border-r-0 whitespace-nowrap">Bulan Bayar</th>
+						<th class="px-4 bg-gray-50 text-gray-700 align-middle py-3 text-xs font-semibold text-left uppercase border-l-0 border-r-0 whitespace-nowrap">Jumlah</th>
+						<th class="px-4 bg-gray-50 text-gray-700 align-middle py-3 text-xs font-semibold text-left uppercase border-l-0 border-r-0 whitespace-nowrap">Status</th>
+						<th class="px-4 bg-gray-50 text-gray-700 align-middle py-3 text-xs font-semibold text-left uppercase border-l-0 border-r-0 whitespace-nowrap">Admin</th>
+						<th class="px-4 bg-gray-50 text-gray-700 align-middle py-3 text-xs font-semibold text-left uppercase border-l-0 border-r-0 whitespace-nowrap">Action</th>
+					</tr>
+				</thead>
+				<tbody class="divide-y divide-gray-100">
+          			<?php $no=1; foreach ($DataRiwayat as $data) {  ?>
+						<tr class="text-gray-500">
+							<th class="border-t-0 px-4 align-middle text-sm font-normal whitespace-nowrap p-4 text-left"><?=$no++ ?></th>
+							<th class="border-t-0 px-4 align-middle text-sm font-normal whitespace-nowrap p-4 text-left"><?=$data->nama_pelanggan ?></th>
+							<th class="border-t-0 px-4 align-middle text-sm font-normal whitespace-nowrap p-4 text-left"><?=$data->nomor_kwh ?></th>
+							<th class="border-t-0 px-4 align-middle text-sm font-normal whitespace-nowrap p-4 text-left"><?=$data->tanggal_pembayaran ?></th>
+							<th class="border-t-0 px-4 align-middle text-sm font-normal whitespace-nowrap p-4 text-left"><?=$data->bulan_bayar ?></th>
+							<td class="border-t-0 px-4 align-middle text-xs font-medium text-gray-900 whitespace-nowrap p-4">Rp.<?=number_format($data->total_bayar,2,',','.') ?></td>
+							<td class="border-t-0 px-4 align-middle text-sm font-normal whitespace-nowrap p-4 text-left">
+								<?php if($data->status == "Belum Dikonfirmasi"): ?>
+									 <span class="text-xs inline-block py-1 px-2.5 leading-none text-center whitespace-nowrap align-baseline font-bold bg-yellow-500 text-white rounded"><?=$data->status?></span>
+								 <?php elseif($data->status == "Lunas"): ?>
+									 <span class="text-xs inline-block py-1 px-2.5 leading-none text-center whitespace-nowrap align-baseline font-bold bg-green-500 text-white rounded"><?=$data->status?></span>
+								 <?php else: ?>
+									 <span class="text-xs inline-block py-1 px-2.5 leading-none text-center whitespace-nowrap align-baseline font-bold bg-red-600 text-white rounded"><?=$data->status?></span>
+								 <?php endif ?>
+			        </td>
+							<th class="border-t-0 px-4 align-middle text-sm font-normal whitespace-nowrap p-4 text-left"><?=$data->nama_admin ?></th>
+							<td class="border-t-0 px-4 align-middle text-xs whitespace-nowrap p-4">
+								<div class="flex items-center justify-center">
+									<div class="inline-flex shadow-md hover:shadow-lg focus:shadow-lg" role="group">
+										<button type="button" data-bs-toggle="modal" data-bs-target="#detail" data-mdb-ripple="true" data-mdb-ripple-color="light" onclick="edit('<?=$data->id_pembayaran?>')" class="rounded inline-block px-4 py-1.5 bg-sky-400 text-white font-medium text-xs leading-tight hover:bg-sky-500 focus:bg-sky-500 focus:outline-none focus:ring-0 active:bg-sky-600 transition duration-150 ease-in-out">Detail</button>
+									</div>
+								</div>
+							</td>
 						</tr>
-					</thead>
-					<tbody>
-            <?php $no=1; foreach ($DataRiwayat as $data) {  ?>
-  						<tr>
-  							<td>
-  								<?=$no++ ?>
-  							</td>
-                <td>
-                  <?=$data->tanggal_pembayaran ?>
-                </td>
-  							<td>
-  								<?=$data->nama_pelanggan ?>
-  							</td>
-  							<td>
-  								<?=$data->nomor_kwh ?>
-  							</td>
-  							<td>
-  								<?=$data->bulan_bayar ?>
-  							</td>
-  							<td>
-  							 	Rp<?=number_format($data->total_bayar,2,',','.') ?>
-  							</td>
-  							<td>
-                   <?php if($data->status == "Belum Dikonfirmasi"): ?>
-                      <span class="label label-warning"><?=$data->status?></span>
-                    <?php elseif($data->status == "Lunas"): ?>
-                      <span class="label label-success"><?=$data->status?></span>
-                    <?php else: ?>
-                      <span class="label label-danger"><?=$data->status?></span>
-                    <?php endif ?>
-  							</td>
-  							<td>
-  								<?=$data->nama_admin ?>
-  							</td>
-                <td>
-                  <a onclick="edit('<?=$data->id_pembayaran ?>')" class="btn btn-primary"  data-toggle="modal" data-target="#detail" href="#">
-                    <i class="fa fa-eye"></i>
-                  </a>
-                </td>
-  						</tr>
-  						<?php } ?>
-					</tbody>
-				</table>
-			</div>
+					<?php } ?>
+				</tbody>
+			</table>
 		</div>
 	</div>
-
 </div>
 
 <!-- Modal detail riwayat-->
-  <div class="modal fade" id="detail" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-          <h4><strong>Detail Riwayat Pembayaran</strong></h4>
-        </div>
-        <div class="modal-body">
-          <br />
-
-          <form action="" class="form-horizontal form-label-left">
-
-            <div class="form-group">
-              <label class="control-label col-md-3 col-sm-3 col-xs-12">Tanggal Bayar :
-              </label>
-              <div class="col-md-7 col-sm-7 col-xs-12">
-                <input type="text" id="tanggal_pembayaran" disabled
-                  class="form-control col-md-7 col-xs-12">
+<div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="detail" tabindex="-1" aria-labelledby="detailTitle" aria-modal="true" role="dialog">
+	<div class="modal-dialog modal-dialog-centered relative w-auto pointer-events-none">
+		<div class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
+			<div class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
+				<h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalScrollableLabel">
+				Detail Riwayat Pembayaran
+				</h5>
+				<button type="button"
+				class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
+				data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+				<div class="modal-body relative p-4">
+				
+					<div class="grid grid-cols-2 gap-4">
+						<div class="form-floating ">
+							<input readonly type="text" name="nama_pelanggan" class="form-control block w-full px-3 text-base font-normal text-gray-700 bg-gray-200 bg-clip-padding border rounded-lg transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" 
+								id="nama_pelanggan" placeholder="John Doe">
+							<label for="nama_pelanggan" class="text-gray-700">Nama Pelanggan</label>
+						</div>
+						<div class="form-floating ">
+							<input readonly type="text" name="nomor_kwh" class="form-control block w-full px-3 text-base font-normal text-gray-700 bg-gray-200 bg-clip-padding border rounded-lg transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" 
+								id="nomor_kwh" placeholder="John Doe">
+							<label for="nomor_kwh" class="text-gray-700">Nomor KWH</label>
+						</div>
+						<div class="form-floating ">
+							<input readonly type="text" name="nama_admin" class="form-control block w-full px-3 text-base font-normal text-gray-700 bg-gray-200 bg-clip-padding border rounded-lg transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" 
+								id="nama_admin" placeholder="John Doe">
+							<label for="nama_admin" class="text-gray-700">Diverifikasi Oleh</label>
+						</div>
+						<div class="form-floating ">
+							<input readonly type="text" name="status" class="form-control block w-full px-3 text-base font-normal text-gray-700 bg-gray-200 bg-clip-padding border rounded-lg transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" 
+								id="status" placeholder="John Doe">
+							<label for="status" class="text-gray-700">Status</label>
+						</div>
+						<div class="form-floating ">
+							<input readonly type="text" name="tanggal_pembayaran" class="form-control block w-full px-3 text-base font-normal text-gray-700 bg-gray-200 bg-clip-padding border rounded-lg transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" 
+								id="tanggal_pembayaran" placeholder="John Doe">
+							<label for="tanggal_pembayaran" class="text-gray-700">Tanggal Bayar</label>
+						</div>
+						<div class="form-floating ">
+							<input readonly type="text" name="bulan_bayar" class="form-control block w-full px-3 text-base font-normal text-gray-700 bg-gray-200 bg-clip-padding border rounded-lg transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" 
+								id="bulan_bayar" placeholder="John Doe">
+							<label for="bulan_bayar" class="text-gray-700">Bulan Bayar</label>
+						</div>
+						<div class="form-floating ">
+							<input readonly type="text" name="meter_awal" class="form-control block w-full px-3 text-base font-normal text-gray-700 bg-gray-200 bg-clip-padding border rounded-lg transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" 
+								id="meter_awal" placeholder="John Doe">
+							<label for="meter_awal" class="text-gray-700">Meter Awal <small class="font-bold text-sky-600">(kwh)</small></label>
+						</div>
+						<div class="form-floating ">
+							<input readonly type="text" name="meter_akhir" class="form-control block w-full px-3 text-base font-normal text-gray-700 bg-gray-200 bg-clip-padding border rounded-lg transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" 
+								id="meter_akhir" placeholder="John Doe">
+							<label for="meter_akhir" class="text-gray-700">Meter Akhir <small class="font-bold text-sky-600">(kwh)</small></label>
+						</div>
+						<div class="form-floating ">
+							<input readonly type="text" name="jumlah_meter" class="form-control block w-full px-3 text-base font-normal text-gray-700 bg-gray-200 bg-clip-padding border rounded-lg transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" 
+								id="jumlah_meter" placeholder="John Doe">
+							<label for="jumlah_meter" class="text-gray-700">Total Meter <small class="font-bold text-sky-600">(kwh)</small></label>
+						</div>
+						<div class="form-floating ">
+							<input readonly type="text" name="biaya_admin" value="2500" class="form-control block w-full px-3 text-base font-normal text-gray-700 bg-gray-200 bg-clip-padding border rounded-lg transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" 
+								id="biaya_admin" placeholder="John Doe">
+							<label for="biaya_admin" class="text-gray-700">Biaya Admin <small class="font-bold text-sky-600">(kwh)</small></label>
+						</div>
+						<div class="form-floating col-span-2">
+							<div class="form-control block w-full px-3 text-base font-normal text-gray-700 bg-gray-200 bg-clip-padding border rounded-lg transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" >
+                <div class="inline-flex font-bold text-xl">
+                  <span>Rp. </span>
+                  <input readonly type="text" name="total_bayar" id="total_bayar" class="font-bold outline-none bg-gray-200 w-auto">
+                </div>
+              </div>
+							<label for="total_bayar" class="text-gray-700 font-semibold">Total Bayar</label>
+						</div>
+            <div class="rounded-lg shadow-lg bg-gray-200 col-span-2">
+              <div class="p-2">
+                <h5 class="text-gray-900 text-lg text-center font-bold">Bukti Bayar</h5>
+              </div>
+              <div data-mdb-ripple="true" data-mdb-ripple-color="light" class="cursor-pointer">
+                <img src="" name="image" class="w-full rounded-b-lg hover:rounded-lg hover:scale-200 hover:z-auto transform-gpu duration-300" id="bukti" alt=""/>
               </div>
             </div>
-
-            <div class="form-group">
-              <label class="control-label col-md-3 col-sm-3 col-xs-12">Pemverifikasi :
-              </label>
-              <div class="col-md-7 col-sm-7 col-xs-12">
-                <input type="text" id="nama_admin" disabled
-                  class="form-control col-md-7 col-xs-12">
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="control-label col-md-3 col-sm-3 col-xs-12">Status :
-              </label>
-              <div class="col-md-7 col-sm-7 col-xs-12">
-                <input type="text" id="status" disabled
-                  class="form-control col-md-7 col-xs-12">
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="control-label col-md-3 col-sm-3 col-xs-12">Bukti Bayar :
-              </label>
-              <div class="col-md-7 col-sm-7 col-xs-12">
-                 <img src="" name="image" class="img-zoom" id="bukti" >
-              </div>
-            </div>
-            <br />
-
-            <div class="form-group">
-              <label class="control-label col-md-3 col-sm-3 col-xs-12">Nomor kWh :
-              </label>
-              <div class="col-md-7 col-sm-7 col-xs-12">
-                <input type="text" id="nomor_kwh" disabled
-                  class="form-control col-md-7 col-xs-12">
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="control-label col-md-3 col-sm-3 col-xs-12">Nama Pelanggan :
-              </label>
-              <div class="col-md-7 col-sm-7 col-xs-12">
-                <input type="text" id="nama_pelanggan" disabled
-                  class="form-control col-md-7 col-xs-12">
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="control-label col-md-3 col-sm-3 col-xs-12">Bulan Bayar :
-              </label>
-              <div class="col-md-7 col-sm-7 col-xs-12">
-                <input type="text" id="bulan_bayar" disabled
-                  class="form-control col-md-7 col-xs-12">
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="control-label col-md-3 col-sm-3 col-xs-12">Meter Awal :
-              </label>
-              <div class="col-md-7 col-sm-7 col-xs-12">
-                <div class="input-group">
-                  <input type="text" value="2000" id="meter_awal" disabled
-                    class="form-control col-md-7 col-xs-12">
-                  <span class="input-group-addon">kWh</span>
-               </div>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="control-label col-md-3 col-sm-3 col-xs-12">Meter Akhir :
-              </label>
-              <div class="col-md-7 col-sm-7 col-xs-12">
-                <div class="input-group">
-                  <input type="text" id="meter_akhir" disabled
-                    class="form-control col-md-7 col-xs-12">
-                  <span class="input-group-addon">kWh</span>
-               </div>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="control-label col-md-3 col-sm-3 col-xs-12">Total Meter :
-              </label>
-              <div class="col-md-7 col-sm-7 col-xs-12">
-                <div class="input-group">
-                  <input type="text" id="jumlah_meter" disabled
-                    class="form-control col-md-7 col-xs-12">
-                  <span class="input-group-addon">kWh</span>
-               </div>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="control-label col-md-3 col-sm-3 col-xs-12">Biaya Admin :
-              </label>
-              <div class="col-md-7 col-sm-7 col-xs-12">
-                <div class="input-group">
-                  <span class="input-group-addon">Rp</span>
-                    <input type="text" value="2500" disabled
-                      class="form-control col-md-7 col-xs-12">
-                  <span class="input-group-addon">.00</span>
-               </div>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="control-label col-md-3 col-sm-3 col-xs-12">Grand Total :
-              </label>
-              <div class="col-md-7 col-sm-7 col-xs-12">
-                <div class="input-group">
-                  <span class="input-group-addon">Rp</span>
-                    <input type="text" id="total_bayar" disabled
-                      class="form-control col-md-7 col-xs-12">
-                  <span class="input-group-addon">.00</span>
-               </div>
-              </div>
-            </div>
-
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
+					</div>
+				</div>
+				<div class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md">
+					<button class="inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
+					type="button" data-bs-dismiss="modal">Batal</button>
+				</div>
+		</div>
+	</div>
+</div>
 
 <script type="text/javascript">
 			function edit(a) {

@@ -1,107 +1,52 @@
-<?php
-	if($this->session->flashdata('pesan_sukses') !=''){
-?>
-			<script>
-			$(document).ready(function(){
-					$("#pesan").modal();
-			});
-			</script>
-<?php
-	}
-?>
+<div class="pt-6 px-4">
+	<?= $this->session->flashdata('message'); ?>
 
-
-<style>
-.label {
-  display: inline;
-  padding: .2em .6em .3em;
-  font-size: 82%;
-  font-weight: 600;
-  line-height: 1;
-  color: #fff;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: baseline;
-  border-radius: .25em;
-}
-
-	.img-zoom {
-		width: 60px;
-		margin: 0 auto;
-	}
-
-	.img-zoom:hover {
-		transform: scale(4);
-	}
-
-	button.dt-button, div.dt-button, a.dt-button{
-	background-color: #00AAFF!important;
-	background: #00AAFF!important;
-	border-color: #00a0f0;
-	color:white;
-}
-</style>
-<h2 class="page-title"><strong><?= $judul ?></strong></h2>
-<div class="row">
-	<div class="col-md-12">
-		<div class="panel">
-			<div class="panel-heading">
-				<h3 class="panel-title"></h3>
-			</div>
-			<div class="panel-body">
-				<table id="tabellaporan" class="table table-bordered">
-					<thead>
-						<tr>
-              <th>Nomor</th>
+	<div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
+		<h3 class="text-xl leading-none font-bold text-gray-900 mb-10"><?= $judul ?></h3>
+		<div class="block w-full overflow-x-auto">
+			<table id="tabellaporan" class="items-center w-full bg-transparent border-collapse">
+				<thead>
+					<tr>
               <th>Bulan Tagihan</th>
               <th>Meter Awal</th>
               <th>Meter Akhir</th>
               <th>Jumlah Meter</th>
               <th>Total Bayar</th>
               <th>Status</th>
+						<th class="px-4 bg-gray-50 text-gray-700 align-middle py-3 text-xs font-semibold text-left uppercase border-l-0 border-r-0 whitespace-nowrap">No</th>
+						<th class="px-4 bg-gray-50 text-gray-700 align-middle py-3 text-xs font-semibold text-left uppercase border-l-0 border-r-0 whitespace-nowrap">Bulan Tagihan</th>
+						<th class="px-4 bg-gray-50 text-gray-700 align-middle py-3 text-xs font-semibold text-left uppercase border-l-0 border-r-0 whitespace-nowrap">Meter Awal</th>
+						<th class="px-4 bg-gray-50 text-gray-700 align-middle py-3 text-xs font-semibold text-left uppercase border-l-0 border-r-0 whitespace-nowrap">Meter Akhir</th>
+						<th class="px-4 bg-gray-50 text-gray-700 align-middle py-3 text-xs font-semibold text-left uppercase border-l-0 border-r-0 whitespace-nowrap">Jumlah Meter</th>
+						<th class="px-4 bg-gray-50 text-gray-700 align-middle py-3 text-xs font-semibold text-left uppercase border-l-0 border-r-0 whitespace-nowrap">Jumlah Bayar</th>
+						<th class="px-4 bg-gray-50 text-gray-700 align-middle py-3 text-xs font-semibold text-left uppercase border-l-0 border-r-0 whitespace-nowrap">Status</th>
+					</tr>
+				</thead>
+				<tbody class="divide-y divide-gray-100">
+          			<?php $no=1; foreach ($DataPembayaran as $data) :  ?>
+						<tr class="text-gray-500">
+							<td class="border-t-0 px-4 align-middle text-sm font-normal whitespace-nowrap p-4 text-left"><?=$no++ ?></td>
+							<td class="border-t-0 px-4 align-middle text-sm font-normal whitespace-nowrap p-4 text-left"><?=$data->bulan ?> <?=$data->tahun ?></td>
+							<td class="border-t-0 px-4 align-middle text-sm font-normal whitespace-nowrap p-4 text-left"><?=$data->meter_awal ?> kWh</td>
+							<td class="border-t-0 px-4 align-middle text-sm font-normal whitespace-nowrap p-4 text-left"><?=$data->meter_akhir ?> kWh</td>
+							<td class="border-t-0 px-4 align-middle text-sm font-normal whitespace-nowrap p-4 text-left"><?=$data->jumlah_meter ?> kWh</td>
+							<td class="border-t-0 px-4 align-middle text-sm font-normal whitespace-nowrap p-4 text-left"><?php $bayar = ($data->jumlah_meter * $data->terperkwh + 2500) ?> Rp. <?=number_format($bayar,2,',','.') ?></td>
+							<td class="border-t-0 px-4 align-middle text-sm font-normal whitespace-nowrap p-4 text-left">
+								<?php if($data->status == "Belum Dikonfirmasi"): ?>
+									 <span class="text-xs inline-block py-1 px-2.5 leading-none text-center whitespace-nowrap align-baseline font-bold bg-yellow-500 text-white rounded"><?=$data->status?></span>
+								 <?php elseif($data->status == "Lunas"): ?>
+									 <span class="text-xs inline-block py-1 px-2.5 leading-none text-center whitespace-nowrap align-baseline font-bold bg-green-500 text-white rounded"><?=$data->status?></span>
+								 <?php else: ?>
+									 <span class="text-xs inline-block py-1 px-2.5 leading-none text-center whitespace-nowrap align-baseline font-bold bg-red-600 text-white rounded"><?=$data->status?></span>
+								 <?php endif ?>
+			        </td>
 						</tr>
-					</thead>
-					<tbody>
-            <?php $no=1; foreach ($DataTagihan as $data) : ?>
-
-            <tr>
-              <td>
-                <?=$no++ ?>
-              </td>
-              <td>
-                <?=$data->bulan ?> <?=$data->tahun ?>
-              </td>
-              <td>
-                <?= $data->meter_awal ?> kWh
-              </td>
-              <td>
-                <?= $data->meter_akhir ?> kWh
-              </td>
-              <td>
-                <?= $data->jumlah_meter ?> kWh
-              </td>
-              <td>
-                <?php $bayar = ($data->jumlah_meter * $data->terperkwh + 2500) ?>
-                Rp<?=number_format($bayar,2,',','.') ?>
-              </td>
-              <td>
-                <?php if($data->status == "Belum Dikonfirmasi"): ?>
-                  <span class="label label-warning"><?=$data->status?></span>
-                <?php elseif($data->status == "Lunas"): ?>
-                  <span class="label label-success"><?=$data->status?></span>
-                <?php else: ?>
-                  <span class="label label-danger"><?=$data->status?></span>
-                <?php endif ?>
-              </td>
-            </tr>
-            <?php endforeach ?>
-					</tbody>
-				</table>
-			</div>
+          <?php endforeach ?>
+				</tbody>
+			</table>
 		</div>
 	</div>
- </div>
-
+</div>
     <!-- Modal Upload Bukti Bayar-->
     <div class="modal fade" id="upload" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog" role="document">
@@ -136,44 +81,28 @@
       </div>
    </div>
 
- 		<!-- Modal Pesan -->
- 		<div class="modal fade" id="pesan" role="dialog">
- 			 <div class="modal-dialog">
- 				 <div class="modal-content">
- 						 <div class="modal-header">
- 								 <button type="button" class="close" data-dismiss="modal">&times;</button>
- 								 <h4 class="modal-title">
- 									 <center>
- 											<font color="green" size="4px"><b><?= $this->session->flashdata('pesan_sukses'); ?></b></font>
- 									 </center>
- 								 </h4>
- 						 </div>
- 				 </div>
- 			 </div>
- 		</div>
-
-      <script type="text/javascript">
-          function bayar(id_tagihan){
-              $("#id_tagihan").val(id_tagihan);
-          }
-      </script>
+<script type="text/javascript">
+    function bayar(id_tagihan){
+        $("#id_tagihan").val(id_tagihan);
+    }
+</script>
 
 
-			<script src="assets/bower_components/datatables.net-bs/js/buttons.print.min.js"></script>
-			<script src="assets/bower_components/datatables.net-bs/js/dataTables.buttons.min.js"></script>
-			<script src="assets/bower_components/datatables.net-bs/js/dataTables.buttonflash.min.js"></script>
-			<script src="assets/bower_components/datatables.net-bs/js/dataTables.jszip.min.js"></script>
-			<script src="assets/bower_components/datatables.net-bs/js/dataTables.pdfmake.min.js"></script>
-			<script src="assets/bower_components/datatables.net-bs/js/dataTables.vfs_fonts.js"></script>
-			<script src="assets/bower_components/datatables.net-bs/js/dataTables.buttons.html5.min.js"></script>
+<script src="<?= base_url('assets/'); ?>js/datatables.net-bs/js/buttons.print.min.js"></script>
+<script src="<?= base_url('assets/'); ?>js/datatables.net-bs/js/dataTables.buttons.min.js"></script>
+<script src="<?= base_url('assets/'); ?>js/datatables.net-bs/js/dataTables.buttonflash.min.js"></script>
+<script src="<?= base_url('assets/'); ?>js/datatables.net-bs/js/dataTables.jszip.min.js"></script>
+<script src="<?= base_url('assets/'); ?>js/datatables.net-bs/js/dataTables.pdfmake.min.js"></script>
+<script src="<?= base_url('assets/'); ?>js/datatables.net-bs/js/dataTables.vfs_fonts.js"></script>
+<script src="<?= base_url('assets/'); ?>js/datatables.net-bs/js/dataTables.buttons.html5.min.js"></script>
 
-			<script>
-			$(function () {
-			    $('#tabellaporan').DataTable({
-			      dom: 'Bfrtip',
-			        buttons: [
-			            'copy', 'csv', 'excel', 'pdf', 'print'
-			        ]
-			    });
-			  })
-			  </script>
+<script>
+$(function () {
+    $('#tabellaporan').DataTable({
+      dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    });
+  })
+  </script>
