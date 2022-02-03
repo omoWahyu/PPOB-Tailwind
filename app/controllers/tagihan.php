@@ -28,6 +28,15 @@ class tagihan extends CI_Controller {
 		$this->load->view('components/layouts/v_template', $data);
 	}
 
+    public function tambah_tagihan(){
+        $data=$this->pelanggan->tambah_pelanggan();
+        $this->session->set_flashdata('message', '
+            <div class="alert bg-teal-400 rounded-lg py-5 px-6 mb-3 text-base text-white inline-flex items-center w-full alert-dismissible fade show" role="alert">
+                Berhasil Menambahkan Data Pelanggan
+                <button type="button" class="btn-close box-content w-4 h-4 p-1 ml-auto text-white border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-yellow-900 hover:opacity-75 hover:no-underline" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>');
+        redirect('data_pelanggan');
+    }
 
 	public function upload_bukti()
 	{

@@ -16,10 +16,10 @@ class user extends CI_Controller {
 		else{
 			$data = array(
 				'title' => 'User Login', // Judul Halaman Pada Browser
-				'title_head' => 'Log In dan gunakan Aplikasi', // Judul Halaman pada Form
+				'title_head' => 'Aplikasi Pembayaran Listrik', // Judul Halaman pada Form
 				'URL' => 'user/proses_login', //Action Halaman
 				'regist' => true, // Boolean
-				'min_psl' => 6 // Minimal Password Length
+				'min_psl' => 4 // Minimal Password Length
 			);
 			 $data['DataTarif'] = $this->user->getDataTarif();
 			//  $this->load->view('components/layouts/v_header';
